@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System.IO;
 
 namespace Car_Rental_BackEnd.Migrations
 {
@@ -33,6 +34,8 @@ namespace Car_Rental_BackEnd.Migrations
                 {
                     table.PrimaryKey("PK_Customer", x => x.UserName);
                 });
+            var sqlFile = Path.Combine(".\\Database", @"DatabaseQueries.sql");
+            migrationBuilder.Sql(File.ReadAllText(sqlFile));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
