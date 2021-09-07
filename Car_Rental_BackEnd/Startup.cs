@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Car_Rental_BackEnd.Data;
 
 namespace Car_Rental_BackEnd
 {
@@ -32,6 +34,9 @@ namespace Car_Rental_BackEnd
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Car_Rental_BackEnd", Version = "v1" });
             });
+
+            services.AddDbContext<Car_Rental_BackEnd_Database>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("Car_Rental_BackEnd_Database")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
