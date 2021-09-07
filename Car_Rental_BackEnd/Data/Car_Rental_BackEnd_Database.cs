@@ -15,5 +15,7 @@ namespace Car_Rental_BackEnd.Data
         }
 
         public DbSet<Car_Rental_BackEnd.Models.Car_Details> Car_Details { get; set; }
+
+        public DbSet<Car_Rental_BackEnd.Models.Customer> Customer { get; set; }
     }
 }
